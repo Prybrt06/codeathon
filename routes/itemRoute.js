@@ -7,6 +7,6 @@ const itemRoute = Router();
 
 itemRoute.post("/create", createItem);
 itemRoute.get("", getItem);
-itemRoute.get("/category", getSpecificItem);
+itemRoute.post("/category", getSpecificItem);
 
 export default itemRoute;
