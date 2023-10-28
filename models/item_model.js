@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
 const item = new mongoose.Schema({
+	productType: {
+		type: String,
+		required: true,
+	},
 	name: {
 		type: String,
 		required: true,
@@ -8,6 +12,10 @@ const item = new mongoose.Schema({
 	company: {
 		type: String,
 		required: true,
+	},
+	color: {
+		type: String,
+		require: true,
 	},
 	price: {
 		type: Number,
