@@ -2,11 +2,13 @@ import { Router } from "express";
 import createItem from "../controller/ItemController/createItem.js";
 import getItem from "../controller/ItemController/getAllItem.js";
 import getSpecificItem from "../controller/ItemController/getSpecificItem.js";
+import getSpecificItemFromImage from "../controller/ItemController/getSpecificItemFromImage.js";
 
-const itemRoute = Router();
+export const itemRoute = Router();
 
 itemRoute.post("/create", createItem);
 itemRoute.get("", getItem);
 itemRoute.post("/category", getSpecificItem);
+itemRoute.post("/categoryFromImage", getSpecificItemFromImage);
 
-export default itemRoute;
+// export default itemRoute;

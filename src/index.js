@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import itemRoute from "../routes/itemRoute.js";
+import { itemRoute } from "../routes/itemRoute.js";
 import { app } from "./server.js";
 
 app.listen(3500, () => {

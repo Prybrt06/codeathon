@@ -3,16 +3,10 @@ import { tranlateText } from "../googleTranslateController/googleTranslate.js";
 
 const getSpecificItem = async (req, res) => {
 	const itemName = await req.body.itemName;
-
 	const nameInEnglish = await tranlateText(itemName, "en");
 
-	console.log(nameInEnglish);
-
-	let words = nameInEnglish.split(" ");
-
+	let words = nameInEnglish.split(/[ \n]/);
 	words = words.filter((word) => word != "");
-
-	console.log(words);
 
 	const productTypeQuery = words.map((word) => ({
 		productType: { $regex: new RegExp(word, "i") },
