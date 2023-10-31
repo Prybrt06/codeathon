@@ -6,6 +6,7 @@ const getSpecificItem = async (req, res) => {
 	const nameInEnglish = await tranlateText(itemName, "en");
 
 	let words = nameInEnglish.split(/[ \n]/);
+	console.log(words);
 	words = words.filter((word) => word != "");
 
 	const productTypeQuery = words.map((word) => ({
@@ -126,6 +127,135 @@ const getSpecificItem = async (req, res) => {
 					items = await Item.find({
 						$and: [{ $or: colorQuery }],
 					});
+				}
+			}
+		}
+	}
+
+	if (items.length == 0) {
+		items = await Item.find({
+			$and: [
+				{ $or: productTypeQuery },
+				{ $or: companyQuery },
+				{ $or: nameQuery },
+				{ $or: colorQuery },
+			],
+		});
+
+		if (items.length == 0) {
+			items = await Item.find({
+				$and: [
+					{ $or: productTypeQuery },
+					{ $or: companyQuery },
+					{ $or: nameQuery },
+				],
+			});
+
+			if (items.length == 0) {
+				items = await Item.find({
+					$and: [
+						{ $or: productTypeQuery },
+						{ $or: nameQuery },
+						{ $or: colorQuery },
+					],
+				});
+
+				if (items.length == 0) {
+					items = await Item.find({
+						$and: [
+							{ $or: companyQuery },
+							{ $or: nameQuery },
+							{ $or: colorQuery },
+						],
+					});
+
+					if (items.length == 0) {
+						items = await Item.find({
+							$and: [
+								{ $or: productTypeQuery },
+								{ $or: companyQuery },
+								{ $or: colorQuery },
+							],
+						});
+
+						if (items.length == 0) {
+							items = await Item.find({
+								$and: [
+									{ $or: productTypeQuery },
+									{ $or: nameQuery },
+								],
+							});
+
+							if (items.length == 0) {
+								items = await Item.find({
+									$and: [
+										{ $or: productTypeQuery },
+										{ $or: companyQuery },
+									],
+								});
+
+								if (items.length == 0) {
+									items = await Item.find({
+										$and: [
+											{ $or: productTypeQuery },
+											{ $or: colorQuery },
+										],
+									});
+
+									if (items.length == 0) {
+										items = await Item.find({
+											$and: [
+												{ $or: companyQuery },
+												{ $or: nameQuery },
+											],
+										});
+
+										if (items.length == 0) {
+											items = await Item.find({
+												$and: [
+													{ $or: companyQuery },
+													{ $or: colorQuery },
+												],
+											});
+
+											if (items.length == 0) {
+												items = await Item.find({
+													$and: [
+														{ $or: nameQuery },
+														{ $or: colorQuery },
+													],
+												});
+
+												if(items.length == 0) {
+													items = await Item.find({
+														$and: [{ $or: productTypeQuery }],
+													});
+
+													if (items.length == 0) {
+														items = await Item.find({
+															$and: [{ $or: companyQuery }],
+														});
+
+														if (items.length == 0) {
+															items = await Item.find({
+																$and: [{ $or: nameQuery }],
+															});
+
+															if (items.length == 0) {
+																items = await Item.find({
+																	$and: [{ $or: colorQuery }],
+																});
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		}
