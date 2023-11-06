@@ -21,6 +21,10 @@ const item = new mongoose.Schema({
 		type: Number,
 		requrired: true,
 	},
+  rating: {
+    type: Number,
+    requrired: true,
+  }
 });
 
 const Item = mongoose.model("Item", item);

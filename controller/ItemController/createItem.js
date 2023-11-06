@@ -8,6 +8,7 @@ const createItem = async (req, res, next) => {
 			company: req.body.company,
 			color: req.body.color,
 			price: req.body.price,
+      rating: req.body.rating,
 		});
 
 		res.status(201).json({ item: item });
